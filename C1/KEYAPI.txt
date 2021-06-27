@@ -1,0 +1,28 @@
+API Voz a Texto
+{
+  "apikey": "AKyA6gbdiYmjRmJMg4jsNEl6u60q6bhpiqCddEPdYAgx",
+  "iam_apikey_description": "Auto-generated for key e1ac14dd-8279-4151-9ab0-e7bde11f1103",
+  "iam_apikey_name": "Auto-generated service credentials",
+  "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+  "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/40006b322a794aa5ad931dbc756d468e::serviceid:ServiceId-f89f557a-ab75-4caa-a9db-2b2a2013a1f2",
+  "url": "https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/605ff8c6-2017-4fc3-a182-6e867c26ace4"
+}
+CLAVE API
+AKyA6gbdiYmjRmJMg4jsNEl6u60q6bhpiqCddEPdYAgx
+URL
+https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/605ff8c6-2017-4fc3-a182-6e867c26ace4
+
+----------------------------------------------------
+API Translate
+{
+  "apikey": "Z9O7-4NpsNlfUhbzMJGv27iMOhoSNpDJDj2HGi9NXfby",
+  "iam_apikey_description": "Auto-generated for key f0c50bfd-64ce-4bf8-a38f-be048fa0f7e6",
+  "iam_apikey_name": "Auto-generated service credentials",
+  "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+  "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/40006b322a794aa5ad931dbc756d468e::serviceid:ServiceId-40a5d0a1-10d1-4b1e-a6e1-218950868ae7",
+  "url": "https://api.us-south.language-translator.watson.cloud.ibm.com/instances/b2f7df1a-0785-4c4f-9d0d-f08b17b72309"
+}
+Clave API
+Z9O7-4NpsNlfUhbzMJGv27iMOhoSNpDJDj2HGi9NXfby
+URL
+https://api.us-south.language-translator.watson.cloud.ibm.com/instances/b2f7df1a-0785-4c4f-9d0d-f08b17b72309
