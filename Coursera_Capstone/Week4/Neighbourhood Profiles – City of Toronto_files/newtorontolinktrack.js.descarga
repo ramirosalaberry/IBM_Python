@@ -1,0 +1,598 @@
+"use strict";
+
+var __oraInf_CoT_StickyAttributes = {};
+var multiTrackSet = false;
+
+function debounceForLinkTracker(A, e, t) {
+  var a;
+  return function () {
+    var i = this,
+        r = arguments,
+        s = function s() {
+      a = null, t || A.apply(i, r);
+    },
+        o = t && !a;
+
+    clearTimeout(a), a = setTimeout(s, e), o && A.apply(i, r);
+  };
+}
+
+(function () {
+  // console.log("loading Ora plugin 20200116 - updated March 4, 2020 - v1 CoT - Did you run babel?");
+  // // Update April 20 changed debounceFunction name debounce to debounceForLinkTracker
+  // // Update Aug 25 fixed issues with calling methods on undefined targetOfEvent
+  var CLICK_EVENT = 'mousedown'; //'click';
+
+  var RIGHTCLICK_EVENT = 'contextmenu';
+  var LINK_ELEMENT = 'a';
+  var BUTTON_ELEMENT = 'BUTTON'; //Configuration from tag function to call when init is complete
+
+  var initCallback = function initCallback(config, asyncReady) {
+    var eventConfig = {
+      "downloadtypes": ["avi", "csv", "doc", "docm", "docx", "flv", "gzip", "ics", "json", "m4a", "mp3", "mp4", "pdf", "ppt", "pptm", "pptx", "rar", "swf", "txt", "wmv", "xls", "xlsm", "xlsx", "xml", "xsd", "zip"],
+      "download": true,
+      "anchor": true,
+      "preserve": false,
+      "javascript": true,
+      "email": true,
+      "phone": true,
+      "rightclick": true,
+      "offsite": true,
+      "onsite": true,
+      "forms": true,
+      "validOnSiteDomains": ["app.toronto.ca", "efun.toronto.ca", "secure.toronto.ca", "booking.toronto.ca", "wx.toronto.ca", "secure.toronto.ca", "map.toronto.ca", "insideto-secure.toronto.ca", "insideto-app.toronto.ca", "insideto-map.toronto.ca"]
+    }; // var event = 'click';
+    // if (config['event'] !== undefined) {
+    //     event = config['event'];
+    // }
+    //Plugin  body
+
+    var typeMatch = function typeMatch(pth, types) {
+      if (pth && typeof pth === "string") {
+        var type = pth.toLowerCase().substring(pth.lastIndexOf(".") + 1, pth.length);
+        var tlen = types.length;
+
+        for (var i = 0; i < tlen; i++) {
+          if (type == types[i]) {
+            return true;
+          }
+        }
+      }
+
+      return false;
+    };
+
+    var stringToParam = function stringToParam(str) {
+      if (str.indexOf('WT.') === 0 || str.indexOf('DCS.') === 0 || str.indexOf('DCSext.') === 0) {
+        return str;
+      } else {
+        return 'DCSext.' + str;
+      }
+    };
+
+    var removeEmpties = function removeEmpties(arr) {
+      var len,
+          i,
+          newarr = [];
+      len = arr.length;
+
+      if (len > 0) {
+        for (i = 0; i < len; i++) {
+          if (typeof arr[i] === 'string' && arr[i].trim === '') {
+            arr[i] = null;
+          }
+
+          if (arr[i] !== null) {
+            newarr.push(arr[i]);
+          }
+        }
+      }
+
+      return newarr;
+    };
+
+    var cleanArray = function cleanArray(arr, delim) {
+      var newarr = [];
+
+      if (delim && typeof arr === 'string') {
+        newarr = arr.split(delim);
+      } else if (isArray(arr)) {
+        newarr = arr;
+      } else {
+        newarr = [arr];
+      }
+
+      return removeEmpties(newarr);
+    };
+
+    var parseParamString = function parseParamString(pstring) {
+      var len,
+          i,
+          pairs,
+          paramval,
+          ret = [];
+      pairs = cleanArray(pstring, ';;');
+      len = pairs.length;
+
+      for (i = 0; i < len; i++) {
+        if (pairs[i].indexOf('=') !== -1) {
+          paramval = cleanArray(pairs[i], '=');
+
+          if (paramval.length === 2) {
+            paramval[0] = stringToParam(paramval[0]);
+            ret = ret.concat(paramval);
+          }
+        }
+      }
+
+      return ret;
+    };
+
+    var dcsuriFromEvent = function dcsuriFromEvent(event, data) {
+      if (event.target.pathname != undefined) {
+        data['dcsuri'] = event.target.pathname.toLowerCase();
+      } else if (event.target.parentElement.pathname != undefined) {
+        data['dcsuri'] = event.target.parentElement.pathname.toLowerCase();
+      }
+    };
+
+    var dcssipFromEvent = function dcssipFromEvent(event, data) {
+      if (event.target.hostname != undefined) {
+        data['dcssip'] = event.target.hostname;
+      } else if (event.target.parentElement.hostname != undefined) {
+        data['dcssip'] = event.target.parentElement.hostname;
+      }
+    };
+
+    var trackHref = function trackHref(text, dcsuri, dcssip) {
+      var data = {};
+      data['wt.dl'] = 99;
+
+      if (text != undefined) {
+        text = text.trim();
+      }
+
+      data['wt.ti'] = 'Link: ' + text;
+      data['dcsuri'] = dcsuri;
+      data['dcssip'] = dcssip;
+      ORA.click({
+        data: data
+      });
+    };
+
+    var insertCustomTagsInToData = function insertCustomTagsInToData(pret, data) {
+      var i = pret.length;
+
+      for (var y = 0; y < i; y += 2) {
+        var key = pret[y];
+
+        if (typeof key === "string") {
+          key = key.toLowerCase();
+        }
+
+        var value = pret[y + 1];
+
+        if (value === "") {
+          delete data[key];
+        } else {
+          data[key] = value;
+        }
+      }
+
+      return data;
+    };
+
+    var captureEventHelper = function captureEventHelper(evt, wt_dl_value, wt_ti_value) {
+      var searchTerm = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+      var data = {};
+      var dcsqry = evt.target.search || '';
+      var wt_params = null;
+      var wt_params_m = null;
+      var wt_params_of_target = evt.target.getAttribute('data-wt_params');
+      var wt_params_of_currentTarget = evt.currentTarget.getAttribute('data-wt_params');
+      var wt_params_m_of_target = evt.target.getAttribute('data-wt_params_m');
+      var wt_params_m_of_currentTarget = evt.currentTarget.getAttribute('data-wt_params_m');
+      var wt_params_pret = null;
+      var wt_params_m_pret = null;
+
+      if (wt_params_of_target || wt_params_of_currentTarget) {
+        if (wt_params_of_target) {
+          wt_params = wt_params_of_target;
+        } else {
+          wt_params = wt_params_of_currentTarget;
+        }
+
+        wt_params_pret = parseParamString(wt_params);
+      }
+
+      if (wt_params_m_of_target || wt_params_m_of_currentTarget) {
+        if (wt_params_m_of_target) {
+          wt_params_m = wt_params_m_of_target;
+        } else {
+          wt_params_m = wt_params_m_of_currentTarget;
+        }
+
+        wt_params_m_pret = parseParamString(wt_params_m);
+        __oraInf_CoT_StickyAttributes = insertCustomTagsInToData(wt_params_m_pret, __oraInf_CoT_StickyAttributes);
+      }
+
+      data = JSON.parse(JSON.stringify(__oraInf_CoT_StickyAttributes));
+      data["wt.dl"] = wt_dl_value;
+      dcssipFromEvent(evt, data);
+      dcsuriFromEvent(evt, data);
+      data["dcsqry"] = data["dcsqry"] || dcsqry;
+      data["dcsref"] = data["dcsref"] || document.location.href;
+      var text = evt.target.textContent || evt.currentTarget.textContent || '';
+      text = text.trim();
+
+      if (text === '') {
+        if (evt.target.tagName === "IMG") {
+          text = evt.target.getAttribute("alt");
+        } else if (evt.currentTarget.tagName === "IMG") {
+          text = evt.currentTarget.getAttribute("alt");
+        } else {
+          text = '';
+        }
+      }
+
+      if (text != undefined) {
+        text = text.trim();
+      }
+
+      if (wt_ti_value) {
+        data["wt.ti"] = wt_ti_value + ": " + text;
+      } else {
+        data["wt.ti"] = wt_ti_value + text;
+      }
+
+      data["wt.ihtml"] = text;
+      data["wt.nv"] = ORA.analytics.dcsRef.dcsNavigation(evt, ["div", "table"]);
+
+      if (wt_ti_value === "FormButton") {
+        if (evt.form) {
+          data["wt.btnhtml"] = evt.form.id || evt.form.name || evt.form.className || "UnabletoProvide";
+        } else if (evt.currentTarget) {
+          data["wt.btnhtml"] = evt.currentTarget.id || evt.currentTarget.name || evt.currentTarget.className || "UnabletoProvide";
+        } else {
+          data["wt.btnhtml"] = "UnabletoProvide";
+        }
+      } else {
+        data["wt.btnhtml"] = "";
+      }
+
+      data["meta_dc_title"] = document.querySelector("meta[name='WT.ti']") && document.querySelector("meta[name='WT.ti']").getAttribute('content') || document.title;
+
+      if (wt_ti_value === "Anchor") {
+        data["wt.z_url"] = evt.target.href;
+      } else {
+        data["wt.z_url"] = data.dcssip + data.dcsuri + dcsqry;
+      }
+
+      if (searchTerm) {
+        data["wt.search-term"] = searchTerm;
+      }
+
+      if (wt_params_pret) {
+        data = insertCustomTagsInToData(wt_params_pret, data);
+      }
+
+      if (wt_params_m_pret) {
+        data = insertCustomTagsInToData(wt_params_m_pret, data);
+      }
+
+      ORA.click({
+        data: data
+      });
+    };
+
+    var captureBubble = function captureBubble(evt) {
+      if (evt.target.tagName == 'A' || evt.target.tagName == 'BUTTON' || evt.target.tagName == 'H2' || evt.target.tagName == 'SPAN' && evt.target.parentElement.tagName == 'A' || evt.target.tagName == 'SPAN' && evt.target.parentElement.parentElement && evt.target.parentElement.parentElement.tagName == 'A') {
+        var data = {};
+        data['wt.dl'] = 99;
+        var text = evt.target.textContent;
+
+        if (text != undefined) {
+          text = evt.target.textContent.trim();
+        }
+
+        data['wt.ti'] = 'Link: ' + text;
+        dcsuriFromEvent(evt, data);
+        dcssipFromEvent(evt, data);
+        ORA.click({
+          data: data
+        });
+      }
+    };
+
+    var isValidOnSiteURL = function isValidOnSiteURL(linkHost, currentHostSecondDomain) {
+      var result = false;
+
+      if (linkHost && linkHost !== location.hostname && (eventConfig.validOnSiteDomains.indexOf(linkHost.toLowerCase()) >= 0 || linkHost.indexOf(currentHostSecondDomain) >= 0)) {
+        result = true;
+      }
+
+      return result;
+    };
+
+    var linksClickListener = function linksClickListener(evt) {
+      // console.log("evt - LINK_ELEMENT click", evt);
+      var firedTracking = false;
+      firedTracking = fireTrackingBasedOnEvent(evt, evt.currentTarget, CLICK_EVENT, "link");
+
+      if (!firedTracking) {
+        firedTracking = fireTrackingBasedOnEvent(evt, evt.target, CLICK_EVENT, "link"); //fireTrackingBasedOnEvent(evt, evt.currentTarget, CLICK_EVENT, "link");
+      }
+    };
+
+    var linksRightClickListener = function linksRightClickListener(evt) {
+      // console.log("evt - RIGHTCLICK_EVENT", evt);
+      var firedTracking = fireTrackingBasedOnEvent(evt, evt.target, RIGHTCLICK_EVENT, "link");
+
+      if (!firedTracking) {
+        firedTracking = fireTrackingBasedOnEvent(evt, evt.currentTarget, RIGHTCLICK_EVENT, "link");
+      }
+    };
+
+    var buttonsListener = function buttonsListener(evt) {
+      // console.log("evt - BUTTON_ELEMENT", evt);
+      var firedTracking = fireTrackingBasedOnEvent(evt, evt.target, CLICK_EVENT, BUTTON_ELEMENT);
+
+      if (!firedTracking) {
+        firedTracking = fireTrackingBasedOnEvent(evt, evt.currentTarget, CLICK_EVENT, BUTTON_ELEMENT);
+      }
+    };
+
+    function removeListeners() {
+      var links = [];
+      var buttons = [];
+
+      if (document.querySelector(LINK_ELEMENT)) {
+        links = document.querySelectorAll(LINK_ELEMENT);
+
+        for (var c = 0; c < links.length; c++) {
+          links[c].removeEventListener(CLICK_EVENT, linksClickListener);
+          links[c].removeEventListener(RIGHTCLICK_EVENT, linksRightClickListener);
+        }
+
+        ;
+      }
+
+      if (document.querySelector(BUTTON_ELEMENT)) {
+        buttons = document.querySelectorAll(BUTTON_ELEMENT);
+
+        for (var c = 0; c < buttons.length; c++) {
+          buttons[c].removeEventListener(CLICK_EVENT, buttonsListener);
+        }
+
+        ;
+      }
+    }
+
+    function setupListeners() {
+      var links = [];
+      var buttons = [];
+
+      if (document.querySelector(LINK_ELEMENT)) {
+        links = document.querySelectorAll(LINK_ELEMENT);
+
+        for (var c = 0; c < links.length; c++) {
+          links[c].addEventListener(CLICK_EVENT, linksClickListener);
+          links[c].addEventListener(RIGHTCLICK_EVENT, linksRightClickListener);
+        }
+
+        ;
+      }
+
+      if (document.querySelector(BUTTON_ELEMENT)) {
+        buttons = document.querySelectorAll(BUTTON_ELEMENT);
+
+        for (var c = 0; c < buttons.length; c++) {
+          buttons[c].addEventListener(CLICK_EVENT, buttonsListener);
+        }
+
+        ;
+      }
+    } //removeListeners();
+
+
+    setupListeners(); // Select the node that will be observed for mutations
+
+    var targetNode = document.getElementsByTagName("body")[0]; // Options for the observer (which mutations to observe)
+
+    var mutationObserverConfig = {
+      subtree: true,
+      childList: true
+    }; //childList: true, 
+    // Callback function to execute when mutations are observed
+
+    var callback = debounceForLinkTracker(function (mutationsList, observer) {
+      // Use traditional 'for loops' for IE 11
+      // for(let mutation of mutationsList) {
+      //     if (mutation.type === 'childList') {
+      //         //console.log('A child node has been added or removed. mutation.type =', mutation.type, mutation);
+      //     }
+      //     else if (mutation.type === 'attributes') {
+      //         //console.log('The ' + mutation.attributeName + ' attribute was modified.');
+      //     } else {
+      //         //console.log("mutation.type = ", mutation.type, mutation);
+      //     }
+      // }
+      removeListeners();
+      setupListeners();
+    }, 500); // const callback = function(mutationsList, observer) {
+    // };
+    // Create an observer instance linked to the callback function
+
+    var observer = new MutationObserver(callback); // Start observing the target node for configured mutations
+
+    observer.observe(targetNode, mutationObserverConfig); // jQuery Based Listening to Events
+    // $(document).on(CLICK_EVENT,LINK_ELEMENT,function(evt){
+    //     let firedTracking = fireTrackingBasedOnEvent(evt, evt.target, CLICK_EVENT, "link");
+    //     if (!firedTracking) {
+    //         firedTracking = fireTrackingBasedOnEvent(evt, evt.currentTarget, CLICK_EVENT, "link");
+    //     }
+    // })
+    // $(document).on(RIGHTCLICK_EVENT,LINK_ELEMENT,function(evt){
+    // let firedTracking = fireTrackingBasedOnEvent(evt, evt.target, RIGHTCLICK_EVENT, "link");
+    // if (!firedTracking) {
+    //     firedTracking = fireTrackingBasedOnEvent(evt, evt.currentTarget, RIGHTCLICK_EVENT, "link");
+    // }
+    // })
+    // $(document).on(CLICK_EVENT,BUTTON_ELEMENT,function(evt){
+    //     let firedTracking = fireTrackingBasedOnEvent(evt, evt.target, CLICK_EVENT, BUTTON_ELEMENT);
+    //     if (!firedTracking) {
+    //         firedTracking = fireTrackingBasedOnEvent(evt, evt.currentTarget, CLICK_EVENT, BUTTON_ELEMENT);
+    //     }
+    // })
+    // Bubble down
+    // document.addEventListener(CLICK_EVENT,function(e){
+    //     console.log("e = ", e, e.target, e.currentTarget);
+    //     if(e.target && e.target.tagName === BUTTON_ELEMENT){
+    //         let firedTracking = fireTrackingBasedOnEvent(evt, evt.target, CLICK_EVENT, BUTTON_ELEMENT);
+    //         if (!firedTracking) {
+    //             firedTracking = fireTrackingBasedOnEvent(evt, evt.currentTarget, CLICK_EVENT, BUTTON_ELEMENT);
+    //         }
+    //      }
+    //      else if (e.target && e.target.tagName === LINK_ELEMENT) {
+    //         let firedTracking = fireTrackingBasedOnEvent(evt, evt.target, CLICK_EVENT, "link");
+    //         if (!firedTracking) {
+    //             firedTracking = fireTrackingBasedOnEvent(evt, evt.currentTarget, CLICK_EVENT, "link");
+    //         }
+    //      }
+    // }, true);
+    // document.addEventListener(RIGHTCLICK_EVENT,function(e){
+    //     console.log("e = ", e, e.target, e.currentTarget);
+    //     if (e.target && e.target.tagName === LINK_ELEMENT) {
+    //         let firedTracking = fireTrackingBasedOnEvent(evt, evt.target, RIGHTCLICK_EVENT, "link");
+    //         if (!firedTracking) {
+    //             firedTracking = fireTrackingBasedOnEvent(evt, evt.currentTarget, RIGHTCLICK_EVENT, "link");
+    //         }
+    //      }
+    // }, true);
+    // evt = the actual event
+    // targetOfEvent = evt.target, evt.currentTarget
+    // typeOfEvent = CLICK_EVENT, RIGHTCLICK_EVENT
+    // eventOnElement = "link", "button"
+
+    var fireTrackingBasedOnEvent = function fireTrackingBasedOnEvent(evt, targetOfEvent, typeOfEvent, eventOnElement) {
+      var firedEvent = true;
+
+      if (targetOfEvent) {
+        var notrack = targetOfEvent.getAttribute('data-wt_track') || '';
+        var trackingEnabled = notrack == null || notrack == '';
+        var wt_params = null;
+        var wt_params_m = null;
+        var wt_params_of_target = evt.target.getAttribute('data-wt_params');
+        var wt_params_of_currentTarget = evt.currentTarget.getAttribute('data-wt_params');
+        var wt_params_m_of_target = evt.target.getAttribute('data-wt_params_m');
+        var wt_params_m_of_currentTarget = evt.currentTarget.getAttribute('data-wt_params_m');
+
+        if (wt_params_of_target) {
+          wt_params = wt_params_of_target;
+        } else if (wt_params_of_currentTarget) {
+          wt_params = wt_params_of_currentTarget;
+        } else {}
+
+        if (wt_params_m_of_target) {
+          wt_params_m = wt_params_m_of_target;
+        } else if (wt_params_m_of_currentTarget) {
+          wt_params_m = wt_params_m_of_currentTarget;
+        } else {}
+
+        if (trackingEnabled) {
+          var currentHost = location.hostname.split(".");
+          var currentHostSecondDomain = '';
+
+          if (currentHost.length >= 3) {
+            currentHostSecondDomain = currentHost[currentHost.length - 2] + '.' + currentHost[currentHost.length - 1];
+          }
+
+          if (typeOfEvent === CLICK_EVENT && eventOnElement === "link" && evt.button == 0) {
+            if (eventConfig.download && targetOfEvent != undefined && typeMatch(targetOfEvent.pathname, eventConfig.downloadtypes) && evt.button != 2) {
+              captureEventHelper(evt, "20", "Download");
+            } else if (eventConfig.javascript && targetOfEvent != undefined && typeof targetOfEvent.href === "string" && typeof targetOfEvent.protocol === "string" && targetOfEvent.href && targetOfEvent.protocol && targetOfEvent.protocol.toLowerCase() === "javascript:") {
+              captureEventHelper(evt, "22", "JavaScript");
+            } else if (eventConfig.email && targetOfEvent != undefined && typeof targetOfEvent.href === "string" && typeof targetOfEvent.protocol === "string" && targetOfEvent.href && targetOfEvent.protocol && targetOfEvent.protocol.toLowerCase() === "mailto:") {
+              captureEventHelper(evt, "23", "MailTo");
+            } else if (eventConfig.phone && targetOfEvent != undefined && typeof targetOfEvent.href === "string" && typeof targetOfEvent.protocol === "string" && targetOfEvent.href && targetOfEvent.protocol && targetOfEvent.protocol.toLowerCase() === "tel:") {
+              captureEventHelper(evt, "33", "Phone");
+            } else if (eventConfig.anchor && targetOfEvent != undefined && typeof targetOfEvent.href === "string" && targetOfEvent.href && targetOfEvent.href.indexOf("#") !== -1 && evt.button != 2) {
+              captureEventHelper(evt, "21", "Anchor");
+            } else if (eventConfig.onsite && targetOfEvent != undefined && typeof targetOfEvent.hostname === "string" && isValidOnSiteURL(targetOfEvent.hostname, currentHostSecondDomain) && !(typeMatch(targetOfEvent.pathname, eventConfig.downloadtypes) && evt.button != 2)) {
+              captureEventHelper(evt, "204", "Onsite");
+            } else if (eventConfig.offsite && targetOfEvent != undefined && typeof targetOfEvent.hostname === "string" && targetOfEvent.hostname !== location.hostname && targetOfEvent.hostname.indexOf(currentHostSecondDomain) === -1 && !(typeMatch(targetOfEvent.pathname, eventConfig.downloadtypes) && evt.button != 2)) {
+              captureEventHelper(evt, "24", "Offsite");
+            } else if (wt_params || wt_params_m) {
+              captureEventHelper(evt, "99", "ATTRCLICK");
+            } else {
+              // TODO: review - what if we don't match anything?
+              firedEvent = false; // console.log("didn't match any", evt);
+            }
+          } else if (typeOfEvent === RIGHTCLICK_EVENT && eventOnElement === "link" && evt.button == 2) {
+            if (eventConfig.download && typeMatch(targetOfEvent.pathname, eventConfig.downloadtypes) && evt.button == 2) {
+              captureEventHelper(evt, "25", "RightClick");
+            } else {
+              // TODO: review - what if right click doesn't match anything?
+              firedEvent = false; // console.log("right click didn't match", evt);
+            }
+          } else if (typeOfEvent === CLICK_EVENT && eventOnElement === BUTTON_ELEMENT && evt.button == 0) {
+            var type = targetOfEvent.type;
+            var searchTerm = null;
+
+            if (document.querySelector('#query')) {
+              searchTerm = document.querySelector('#query').value;
+            }
+
+            if (eventConfig.forms && (type && (type == "submit" || type == "image" || type == "button" || type == "reset") || type == "text")) {
+              if (targetOfEvent.form) {
+                // TODO: review - not sure what to do with form action
+                // evt.currentTarget.form.getAttribute("action") // not sure what to do with this
+                if (targetOfEvent.form.method && targetOfEvent.form.method.toLowerCase() == "post") {
+                  captureEventHelper(evt, "27", "FormButton", searchTerm);
+                } else {
+                  captureEventHelper(evt, "26", "FormButton", searchTerm);
+                }
+              } else if (targetOfEvent.tagName.toLowerCase() === "input") {
+                captureEventHelper(evt, "28", "FormButton", searchTerm);
+              } else {
+                captureEventHelper(evt, "29", "FormButton", searchTerm);
+              }
+            } else if (wt_params || wt_params_m) {
+              captureEventHelper(evt, "99", "ATTRCLICK", searchTerm);
+            } else {
+              firedEvent = false;
+            }
+          } else {
+            firedEvent = false;
+          }
+        } else {
+          firedEvent = false;
+        }
+      } else {
+        firedEvent = false;
+      }
+
+      return firedEvent;
+    };
+  };
+
+  ORA.regPlugin('torontolinktrack', initCallback, {
+    'blockCollect': true
+  });
+
+  if (typeof dcsMultiTrack !== 'undefined' && typeof multiTrackSet !== 'undefined') {
+    if (multiTrackSet !== true) {
+      window.originalDscMultiTrack = dcsMultiTrack;
+    }
+
+    dcsMultiTrack = function dcsMultiTrack() {
+      var _window$originalDscMu;
+
+      __oraInf_CoT_StickyAttributes = {};
+
+      (_window$originalDscMu = window.originalDscMultiTrack).call.apply(_window$originalDscMu, [this].concat(Array.prototype.slice.call(arguments)));
+    };
+
+    window.multiTrackSet = true;
+  }
+})();

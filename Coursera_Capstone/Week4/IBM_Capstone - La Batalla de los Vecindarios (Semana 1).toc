@@ -1,6 +1,13 @@
 \babel@toc {spanish}{}
-\contentsline {section}{\numberline {1}Definición del problema}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Planteo del problema}{1}{subsection.1.1}%
+\contentsline {section}{\numberline {1}Definición del problema}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Planteo del problema}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Perfil de interesados}{3}{subsection.1.2}%
 \contentsline {section}{\numberline {2}Fuente de datos. Adquisición y transformación}{3}{section.2}%
-\contentsline {section}{\numberline {3}Metodología}{3}{section.3}%
+\contentsline {section}{\numberline {3}Metodología}{4}{section.3}%
+\contentsline {section}{\numberline {4}Desarrollo del trabajo}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Primera parte, los barrios y sus coordenadas}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Segunda parte, datos demográficos de residentes sudamericanos}{8}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Tercera parte. Análisis primario de los datos demográficos }{10}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Cuarta parte. Obtención de datos de restaurantes sudamericanos }{13}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Resultados}{17}{section.5}%
+\contentsline {section}{\numberline {6}Conclusiones}{17}{section.6}%
