@@ -1,0 +1,9 @@
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.sty
+_minted-document/
+_minted-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1)/
+cache/

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6.28) (preloaded format=pdflatex 2021.7.5)  10 JUL 2021 20:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6.28) (preloaded format=pdflatex 2021.7.5)  11 JUL 2021 20:53
 entering extended mode
 **"./IBM_Capstone - La Batalla de los Vecindarios (Semana 1).tex"
 (IBM_Capstone - La Batalla de los Vecindarios (Semana 1).tex
@@ -500,361 +500,51 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write6
 \openout6 = `"IBM_Capstone - La Batalla de los Vecindarios (Semana 1).toc"'.
 
- [1
-
-{C:/Users/Ramiro Salaberry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<Toronto.jpg, id=76, 147.4308pt x 108.1641pt>
+<Toronto.jpg, id=28, 147.4308pt x 108.1641pt>
 File: Toronto.jpg Graphic file (type jpg)
 <use Toronto.jpg>
 Package pdftex.def Info: Toronto.jpg  used on input line 43.
 (pdftex.def)             Requested size: 284.5734pt x 199.18277pt.
-<parrillada.jpg, id=77, 225.84375pt x 225.84375pt>
+ [1
+
+{C:/Users/Ramiro Salaberry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<parrillada.jpg, id=43, 225.84375pt x 225.84375pt>
 File: parrillada.jpg Graphic file (type jpg)
 <use parrillada.jpg>
 Package pdftex.def Info: parrillada.jpg  used on input line 55.
 (pdftex.def)             Requested size: 284.5646pt x 199.18076pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[2 <./Toronto.jpg>] [3 <./parrillada.jpg>]
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -S default -f latex -P commandprefix=PYG > IBM_Capstone_-_
-La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-runsystem(pygmentize -S default -f latex -P commandprefix=PYGdefault > IBM_Caps
-tone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-.
-
-(C:\Program Files\MiKTeX 2.9\tex/latex/base\t1cmtt.fd
-File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <7> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 3.
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
-7.
-
-(C:\Program Files\MiKTeX 2.9\tex/latex/base\ts1cmtt.fd
-File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [4])
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg [5])
-<df1.png, id=113, 405.76593pt x 137.7647pt>
-File: df1.png Graphic file (type png)
-<use df1.png>
-Package pdftex.def Info: df1.png  used on input line 192.
-(pdftex.def)             Requested size: 202.88246pt x 68.88217pt.
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg [6 <./df1.png>
-])
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
- (IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-<df2.png, id=122, 474.27188pt x 133.24782pt>
-File: df2.png Graphic file (type png)
-<use df2.png>
-Package pdftex.def Info: df2.png  used on input line 248.
-(pdftex.def)             Requested size: 237.13536pt x 66.62373pt.
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-<df3.png, id=123, 403.5075pt x 143.03438pt>
-File: df3.png Graphic file (type png)
-<use df3.png>
-Package pdftex.def Info: df3.png  used on input line 266.
-(pdftex.def)             Requested size: 201.75325pt x 71.517pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg [7 <./df2.png>
-])
-<map1.png, id=131, 745.28438pt x 389.95688pt>
-File: map1.png Graphic file (type png)
-<use map1.png>
-Package pdftex.def Info: map1.png  used on input line 293.
-(pdftex.def)             Requested size: 335.37488pt x 175.47896pt.
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
- (IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg [8 <./df3.png
-> <./map1.png>])
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-<df4.png, id=140, 645.16031pt x 135.50626pt>
-File: df4.png Graphic file (type png)
-<use df4.png>
-Package pdftex.def Info: df4.png  used on input line 357.
-(pdftex.def)             Requested size: 322.57936pt x 67.75294pt.
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg [9 <./df4.png>
-])
-<df5.png, id=147, 806.26219pt x 159.59625pt>
-File: df5.png Graphic file (type png)
-<use df5.png>
-Package pdftex.def Info: df5.png  used on input line 368.
-(pdftex.def)             Requested size: 322.49916pt x 63.83736pt.
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
- (IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg [10 <./df5.pn
-g>])
-<map2.png, id=154, 744.53156pt x 391.4625pt>
-File: map2.png Graphic file (type png)
-<use map2.png>
-Package pdftex.def Info: map2.png  used on input line 425.
-(pdftex.def)             Requested size: 335.0361pt x 176.1565pt.
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
- (IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-<graf1.png, id=155, 403.5075pt x 316.18124pt>
-File: graf1.png Graphic file (type png)
-<use graf1.png>
-Package pdftex.def Info: graf1.png  used on input line 457.
-(pdftex.def)             Requested size: 181.57669pt x 142.28024pt.
-
-[11 <./map2.png>]
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-<map3.png, id=162, 743.77875pt x 388.45125pt>
-File: map3.png Graphic file (type png)
-<use map3.png>
-Package pdftex.def Info: map3.png  used on input line 510.
-(pdftex.def)             Requested size: 334.69734pt x 174.80144pt.
- [12 <./graf1.png>]
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
- (IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-Overfull \hbox (1.48273pt too wide) in paragraph at lines 523--535
-[] 
- []
-
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
-
-(IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg [13 <./map3.pn
-g>])
-<df6.png, id=176, 804.00375pt x 180.675pt>
-File: df6.png Graphic file (type png)
-<use df6.png>
-Package pdftex.def Info: df6.png  used on input line 599.
-(pdftex.def)             Requested size: 321.59581pt x 72.2687pt.
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
- (IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg [14 <./df6.pn
-g>])
-<df7.png, id=183, 779.91376pt x 79.79813pt>
-File: df7.png Graphic file (type png)
-<use df7.png>
-Package pdftex.def Info: df7.png  used on input line 624.
-(pdftex.def)             Requested size: 311.95998pt x 31.91867pt.
-\openout3 = `IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P p
-ython3=True -o IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg 
-IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...executed.
-
- (IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg)
-<map4.png, id=184, 746.03719pt x 391.4625pt>
-File: map4.png Graphic file (type png)
-<use map4.png>
-Package pdftex.def Info: map4.png  used on input line 663.
-(pdftex.def)             Requested size: 335.71362pt x 176.1565pt.
-
-[15 <./df7.png>]
-<df8.png, id=191, 807.015pt x 204.765pt>
-File: df8.png Graphic file (type png)
-<use df8.png>
-Package pdftex.def Info: df8.png  used on input line 671.
-(pdftex.def)             Requested size: 363.1534pt x 92.14339pt.
-
-Overfull \hbox (18.1534pt too wide) in paragraph at lines 671--672
- [][] 
- []
-
-<df9.png, id=192, 813.0375pt x 215.30438pt>
-File: df9.png Graphic file (type png)
-<use df9.png>
-Package pdftex.def Info: df9.png  used on input line 677.
-(pdftex.def)             Requested size: 365.8635pt x 96.88606pt.
-
-Overfull \hbox (20.8635pt too wide) in paragraph at lines 677--678
- [][] 
- []
-
-<df10.png, id=193, 807.7678pt x 201.75375pt>
-File: df10.png Graphic file (type png)
-<use df10.png>
-Package pdftex.def Info: df10.png  used on input line 683.
-(pdftex.def)             Requested size: 363.49214pt x 90.78835pt.
-
-Overfull \hbox (18.49214pt too wide) in paragraph at lines 683--684
- [][] 
- []
-
-[16 <./map4.png> <./df8.png> <./df9.png>] [17 <./df10.png>] [18]
+ [2 <./Toronto.jpg> <./parrillada.jpg>] [3] [4]
 (IBM_Capstone - La Batalla de los Vecindarios (Semana 1).aux
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
 Package rerunfilecheck Info: File `"IBM_Capstone - La Batalla de los Vecindario
 s (Semana 1)".out' has not changed.
-(rerunfilecheck)             Checksum: 12F0524B69FF32CFAA3E5640BA2DF42C;2705.
-runsystem(del IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).pyg)...ex
-ecuted.
-
-runsystem(del IBM_Capstone_-_La_Batalla_de_los_Vecindarios_(Semana_1).out.pyg).
-..executed.
-
+(rerunfilecheck)             Checksum: 15DFC31B411FF65652BFE8374D3CF12D;888.
  ) 
 Here is how much of TeX's memory you used:
- 14828 strings out of 478813
- 238956 string characters out of 2855011
- 624030 words of memory out of 3000000
- 32474 multiletter control sequences out of 15000+600000
- 416555 words of font info for 52 fonts, out of 8000000 for 9000
+ 14323 strings out of 478813
+ 228077 string characters out of 2855011
+ 614383 words of memory out of 3000000
+ 32063 multiletter control sequences out of 15000+600000
+ 413097 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,9n,81p,758b,688s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 75i,6n,81p,663b,447s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\Ramiro Salaberry\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
-/ec/dpi600\ecti1000.pk> <C:\Users\Ramiro Salaberry\AppData\Local\MiKTeX\2.9\fon
-ts/pk/ljfour/jknappen/ec/dpi525\tctt0800.pk> <C:\Users\Ramiro Salaberry\AppData
-\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi525\ectt0800.pk> <C:\Users\Ram
-iro Salaberry\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi525\ecit0
-800.pk> <C:\Users\Ramiro Salaberry\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkn
-appen/ec/dpi600\ecbx1200.pk> <C:\Users\Ramiro Salaberry\AppData\Local\MiKTeX\2.
-9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Ramiro Salaberry\Ap
-pData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\User
+/ec/dpi600\ecbx1200.pk> <C:\Users\Ramiro Salaberry\AppData\Local\MiKTeX\2.9\fon
+ts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Ramiro Salaberry\AppData
+\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Ram
+iro Salaberry\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1
+440.pk> <C:\Users\Ramiro Salaberry\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkn
+appen/ec/dpi600\ecrm0900.pk> <C:\Users\Ramiro Salaberry\AppData\Local\MiKTeX\2.
+9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Ramiro Salaberry\Ap
+pData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\User
 s\Ramiro Salaberry\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
-ecbx1440.pk> <C:\Users\Ramiro Salaberry\AppData\Local\MiKTeX\2.9\fonts/pk/ljfou
-r/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Ramiro Salaberry\AppData\Local\MiKT
-eX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Ramiro Salaber
-ry\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:
-\Users\Ramiro Salaberry\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dp
-i600\ecrm1728.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-mi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb>
+ecrm1728.pk>
 Output written on "IBM_Capstone - La Batalla de los Vecindarios (Semana 1).pdf"
- (18 pages, 1956740 bytes).
+ (4 pages, 145488 bytes).
 PDF statistics:
- 739 PDF objects out of 1000 (max. 8388607)
- 49 named destinations out of 1000 (max. 500000)
- 182 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 335 PDF objects out of 1000 (max. 8388607)
+ 13 named destinations out of 1000 (max. 500000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
